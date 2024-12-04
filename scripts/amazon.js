@@ -85,6 +85,17 @@ document.querySelectorAll('.js-add-to-cart')
           quantity: 1
         });
       }
-      console.log(cart);
+
+      let cartQuantity = 0;
+      // Loops through cart array and adds up item quantity and stores it in cartQuantity.
+      cart.forEach((item) => {
+        cartQuantity += item.quantity;
+      });
+
+      document.querySelector('.js-cart-quantity')
+        .innerHTML = cartQuantity;
+
     });
   });
+
+
