@@ -6,8 +6,9 @@ Main Idea of Javascript
 */
 
 // Modules only work with live server.
-import { cart } from '../data/cart.js';
+import { cart, addToCart } from '../data/cart.js';
 import { products } from '../data/products.js';
+
 
 // products array is being loaded from products.js
 let productsHTML = '';
@@ -68,35 +69,25 @@ products.forEach((product, index) => {
 document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
 
+function updateCartQuantity() {
+  let cartQuantity = 0;
+  // Loops through cart array and adds up cartItem quantity and stores it in cartQuantity.
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQuantity;
+}
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach(button => {
     button.addEventListener('click', () => {
       const productId = button.dataset.productId; // Getting the product ID out of the element. data-product-id attribute in the button element stores the ID.
-      let matchingItem;
-      cart.forEach(item => {
-        if (productId === item.productId) {
-          matchingItem = item;
-        }
-      });
 
-      // If item already exists, increase quantity by 1
-      if (matchingItem) {
-        matchingItem.quantity++;
-      } else {
-        cart.push({
-          productId,
-          quantity: 1
-        });
-      }
+      addToCart(productId);
 
-      let cartQuantity = 0;
-      // Loops through cart array and adds up item quantity and stores it in cartQuantity.
-      cart.forEach((item) => {
-        cartQuantity += item.quantity;
-      });
-
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
+      updateCartQuantity();
 
     });
   });
