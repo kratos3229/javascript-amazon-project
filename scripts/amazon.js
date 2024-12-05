@@ -69,6 +69,8 @@ products.forEach((product, index) => {
 document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
 
+updateCartQuantity();
+
 function updateCartQuantity() {
   let cartQuantity = 0;
   // Loops through cart array and adds up cartItem quantity and stores it in cartQuantity.
