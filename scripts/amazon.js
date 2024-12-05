@@ -5,6 +5,10 @@ Main Idea of Javascript
 3. Make it interactive
 */
 
+// Modules only work with live server.
+import { cart } from '../data/cart.js';
+import { products } from '../data/products.js';
+
 // products array is being loaded from products.js
 let productsHTML = '';
 
@@ -69,7 +73,6 @@ document.querySelectorAll('.js-add-to-cart')
     button.addEventListener('click', () => {
       const productId = button.dataset.productId; // Getting the product ID out of the element. data-product-id attribute in the button element stores the ID.
       let matchingItem;
-
       cart.forEach(item => {
         if (productId === item.productId) {
           matchingItem = item;
