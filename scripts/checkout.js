@@ -15,8 +15,6 @@ cart.forEach((cartItem) => {
     }
   });
 
-  console.log(matchingProduct);
-
   orderSummaryHTML += `
     <div class="cart-item-container js-cart-item-container-${ matchingProduct.id }">
       <div class="delivery-date">
@@ -96,8 +94,6 @@ cart.forEach((cartItem) => {
   `
 });
 
-console.log(orderSummaryHTML);
-
 document.querySelector('.js-order-summary')
   .innerHTML = orderSummaryHTML;
 
@@ -113,3 +109,5 @@ document.querySelectorAll('.js-delete-link')
       container.remove();
     });
   });
+
+console.log(cart);
