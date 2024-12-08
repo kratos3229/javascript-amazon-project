@@ -8,6 +8,7 @@ Main Idea of Javascript
 // Modules only work with live server.
 import { cart, addToCart } from '../data/cart.js';
 import { products } from '../data/products.js';
+import { formatCurrency } from "./utils/money.js";
 
 
 // products array is being loaded from products.js
@@ -34,7 +35,7 @@ products.forEach((product, index) => {
       </div>
 
       <div class="product-price">
-        $${ (product.priceCents / 100).toFixed(2) }
+        $${ formatCurrency(product.priceCents) }
       </div>
 
       <div class="product-quantity-container">
