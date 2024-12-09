@@ -12,7 +12,7 @@ import { formatCurrency } from "./utils/money.js";
 
 
 // products array is being loaded from products.js
-let productsHTML = '';
+let productsHTML = ``;
 
 products.forEach((product, index) => {
   productsHTML += `

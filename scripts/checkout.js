@@ -1,4 +1,6 @@
 import { renderOrdersummary } from "./checkout/orderSummary.js";
+import { renderPaymentsummary } from "./checkout/paymentSummary.js";
 
-// This is called MVC (Model-View-controller). MVC is a design pattern.
+// MVC (Model-View-controller). MVC is a design pattern.
 renderOrdersummary();
+renderPaymentsummary();
