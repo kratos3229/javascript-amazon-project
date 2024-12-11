@@ -2,16 +2,16 @@
 
 class Cart {
   cartItems; // carItems = undefined;
-  localStorageKey;
+  #localStorageKey; // Private property.
 
   // Constructor runs everytime an object is initialized.
   constructor(localStorageKey) {
-    this.localStorageKey = localStorageKey;
-    this.loadFromStorage();
+    this.#localStorageKey = localStorageKey;
+    this.#loadFromStorage();
   }
 
-  loadFromStorage() {
-    this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)); // Will give null if cart is empty
+  #loadFromStorage() {
+    this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)); // Will give null if cart is empty
   
     // Checks if cart is empty. If empty, sets a default value.
     if(!this.cartItems) {
@@ -31,7 +31,7 @@ class Cart {
 
   // Saves cart to local storage.
   saveToStorage() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
   }
 
   addToCart(productId) {
@@ -93,5 +93,3 @@ const cart = new Cart('cart-oop');
 const businessCart = new Cart('cart-business');
 
 console.log(cart);
-console.log(businessCart);
-console.log(businessCart instanceof Cart);

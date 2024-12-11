@@ -54,8 +54,6 @@ export function renderPaymentSummary() {
     </button>
   `;
 
-  console.log(shippingPriceCents);
-
   document.querySelector('.js-payment-summary')
     .innerHTML = paymentSummaryHTML;
 }
