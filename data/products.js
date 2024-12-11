@@ -26,6 +26,7 @@ class Products {
     this.name = productDetails.name;
     this.rating = productDetails.rating;
     this.priceCents = productDetails.priceCents;
+    this.type = productDetails.type;
   }
 
   getStarsURL() {
@@ -35,8 +36,30 @@ class Products {
   getPrice() {
     return `$${ formatCurrency(this.priceCents) }`;
   }
+
+  extraInfoHTML() {
+    return '';
+  }
 }
 
+class Clothing extends Products {
+  sizeChartLink;
+
+  constructor(productDetails) {
+    super(productDetails); // Calls the constructor of the parent class Products
+    this.sizeChartLink = productDetails.sizeChartLink;
+    this.type = productDetails.type;
+  }
+
+  extraInfoHTML() {
+    return `
+      <a href="${this.sizeChartLink}" target="_blank">Size Chart</a>
+    `;
+  }
+
+}
+
+// Converting products to instances of Product class.
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -697,5 +720,11 @@ export const products = [
     ]
   }
 ].map((productDetails) => {
-  return new Products(productDetails);
+  if(productDetails.type === 'clothing') {
+    return new Clothing(productDetails);
+  } else {
+    return new Products(productDetails);
+  }
 });
+
+console.log(products);
