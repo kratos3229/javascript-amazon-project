@@ -13,6 +13,7 @@ export function getProduct(productId) {
 }
 
 // Converting an object into a class.
+
 class Products {
   id;
   image;
@@ -58,6 +59,12 @@ class Clothing extends Products {
   }
 
 }
+
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+*/
 
 // Converting products to instances of Product class.
 export const products = [
