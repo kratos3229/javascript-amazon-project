@@ -7,6 +7,24 @@ import { loadCart } from "../data/cart.js";
 
 // MVC (Model-View-controller). MVC is a design pattern.
 
+// async makes a funtion return a promise and lets us use await
+async function loadPage() {
+
+  await loadProductsFetch(); // await lets us use asynchronous code like normal code
+
+  await new Promise((resolve) => {
+    loadCart(() => {
+      resolve('value2');
+    });
+  });
+
+  renderOrderSummary();
+  renderPaymentSummary();
+
+}
+loadPage();
+
+/*
 // Waits for all promises to finish before the next step.
 Promise.all([
   // doesnt need "new Promise" code since loadProductsFetch already returns a promise
@@ -23,6 +41,7 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
+*/
 
 /*
 new Promise((resolve) => {
