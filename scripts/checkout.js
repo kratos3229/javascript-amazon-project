@@ -9,14 +9,20 @@ import { loadCart } from "../data/cart.js";
 
 // async makes a funtion return a promise and lets us use await
 async function loadPage() {
+  try {
+    // throw 'error1';
 
-  await loadProductsFetch(); // await lets us use asynchronous code like normal code
+    await loadProductsFetch(); // await lets us use asynchronous code like normal code
 
-  await new Promise((resolve) => {
-    loadCart(() => {
-      resolve('value2');
+    await new Promise((resolve) => {
+      loadCart(() => {
+        resolve('value2');
+      });
     });
-  });
+
+  } catch (error) {
+    console.log('Unexpected error. Please try again later.');
+  }
 
   renderOrderSummary();
   renderPaymentSummary();
